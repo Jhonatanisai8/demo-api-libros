@@ -29,6 +29,13 @@ app.get("/", (req, res) => {
   res.send("Bienvenido a mi API con NodeJS");
 });
 
+app.get("/libros/:id", (req, res) => {
+  const data = leerData();
+  const id = parseInt(req.params.id);
+  const libro = data.libros.find((libr) => libr.id === id);
+  res.json(libro);
+});
+
 leerData();
 
 app.listen(3000, () => {
