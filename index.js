@@ -2,10 +2,19 @@ import expres from "express";
 import fs from "fs";
 const app = expres();
 
+const archivo = "./db/db.json";
 const leerData = () => {
   try {
-    const data = fs.readFileSync("./db/db.json");
+    const data = fs.readFileSync(archivo);
     console.log(JSON.parse(data));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const escribir = (data) => {
+  try {
+    fs.writeFileSync(archivo, JSON.stringify(data));
   } catch (error) {
     console.log(error);
   }
