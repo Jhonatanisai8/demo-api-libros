@@ -1,6 +1,8 @@
 import expres from "express";
 import fs from "fs";
+import bodyParser from "body-parser";
 const app = expres();
+app.use(bodyParser.json());
 
 const archivo = "./db/db.json";
 const leerData = () => {
@@ -34,6 +36,18 @@ app.get("/libros/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const libro = data.libros.find((libr) => libr.id === id);
   res.json(libro);
+});
+
+app.post("/nuevo-libro", (req, res) => {
+  const data = leerData();
+  const body = req.body;
+  const nuevoLibro = {
+    id: data.libros.length + 1,
+    ...body,
+  };
+  data.libros.push(nuevoLibro);
+  escribirData(data);
+  res.json(nuevoLibro);
 });
 
 leerData();

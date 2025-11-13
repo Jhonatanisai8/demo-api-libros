@@ -1,15 +1,1 @@
-{
-    "libros": [{
-            "id": 1,
-            "nombre": "Libro 1",
-            "autor": "Autor 1",
-            "anio": 1233
-        },
-        {
-            "id": 2,
-            "nombre": "Libro 2",
-            "autor": "Autor 2",
-            "anio": 1988
-        }
-    ]
-}
+{"libros":[{"id":1,"nombre":"Libro 1","autor":"Autor 1","anio":1233},{"id":2,"nombre":"Libro 2","autor":"Autor 2","anio":1988},{"id":3},{"id":4,"nombre":"Libro nuevo","autor":"Autor nuevo","anio":2023}]}
