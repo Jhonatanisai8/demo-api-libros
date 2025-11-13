@@ -6,19 +6,24 @@ const archivo = "./db/db.json";
 const leerData = () => {
   try {
     const data = fs.readFileSync(archivo);
-    console.log(JSON.parse(data));
+    return JSON.parse(data);
   } catch (error) {
     console.log(error);
   }
 };
 
-const escribir = (data) => {
+const escribirData = (data) => {
   try {
     fs.writeFileSync(archivo, JSON.stringify(data));
   } catch (error) {
     console.log(error);
   }
 };
+
+app.get("/libros", (req, res) => {
+  const data = leerData();
+  res.json(data.libros);
+});
 
 app.get("/", (req, res) => {
   res.send("Bienvenido a mi API con NodeJS");
