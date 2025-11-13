@@ -1,15 +1,22 @@
 import expres from "express";
-
+import fs from "fs";
 const app = expres();
 
+const leerData = () => {
+  try {
+    const data = fs.readFileSync("./db/db.json");
+    console.log(JSON.parse(data));
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-app.get("/",(req,res) => {
-    res.send("Bienvenido a mi API con NodeJS")
-})
+app.get("/", (req, res) => {
+  res.send("Bienvenido a mi API con NodeJS");
+});
 
-
+leerData();
 
 app.listen(3000, () => {
   console.log("Servidor escuchando en el puerto 3000");
 });
-
